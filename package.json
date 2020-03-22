@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "deploy": "git push heroku master",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "build": "cd client && npm run build-win",
+    "start": "npm run build && node index.js"
   },
   "author": "",
   "license": "ISC",
