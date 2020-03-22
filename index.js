@@ -22,6 +22,11 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function() {
     console.log('A user disconnected')
   })
+
+  socket.on('message', data => {
+    console.log(data)
+    socket.broadcast.emit('broadcast', 'hello friends!')
+  })
 })
 
 http.listen(PORT, function() {

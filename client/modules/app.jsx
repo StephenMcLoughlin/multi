@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { Micheal } from './micheal/micheal'
-import socketIOClient from 'socket.io-client'
+import { socket, onReceiveMessage } from '../socket/socket'
 
-const App = () => {
+const App = ({ test }) => {
   useEffect(() => {
-    const socket = socketIOClient(process.env.url)
-    socket.on('Test', data => console.log(data))
+    socket.on('Test', data => onReceiveMessage(data))
   }, [])
 
   return (
@@ -15,4 +16,11 @@ const App = () => {
   )
 }
 
-export default App
+export default compose(
+  connect(
+    ({ test: { test } }) => ({
+      test,
+    }),
+    {},
+  ),
+)(App)

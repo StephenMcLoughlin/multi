@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
 
-const testAction = createAction('test')
+export const testAction = createAction('test')
 
 const INITIAL_STATE = {
   test: null,
