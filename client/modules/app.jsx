@@ -1,10 +1,18 @@
-import React from 'react'
-// import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
 import { Micheal } from './micheal/micheal'
-const App = () => (
-  <div>
-    <Micheal />
-  </div>
-)
+import socketIOClient from 'socket.io-client'
+
+const App = () => {
+  useEffect(() => {
+    const socket = socketIOClient(process.env.url)
+    socket.on('Test', data => console.log(data))
+  }, [])
+
+  return (
+    <div>
+      <Micheal />
+    </div>
+  )
+}
 
 export default App

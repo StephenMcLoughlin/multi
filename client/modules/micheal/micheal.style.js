@@ -8,6 +8,7 @@ export const Container = styled.div`
 `
 
 export const Image = styled.img`
-  width: 10%;
+  width: 200px;
+  height: 200px;
   cursor: pointer;
 `
