@@ -16,16 +16,24 @@ app.get('/', (req, res) => {
 //Whenever someone connects this gets executed
 io.on('connection', function(socket) {
   console.log('A user connected')
-  socket.emit('Test', { test: 'test' })
+  socket.emit('connected', 'connected')
 
   //Whenever someone disconnects this piece of code executed
   socket.on('disconnect', function() {
     console.log('A user disconnected')
   })
 
-  socket.on('message', data => {
-    console.log(data)
-    socket.broadcast.emit('broadcast', 'hello friends!')
+  socket.on('message', ({ message }) => {
+    switch (message) {
+      case 'coronaVirus':
+        return socket.broadcast.emit('messageFromServer', {
+          message: 'coronaVirus',
+        })
+      default:
+        return socket.broadcast.emit('messageFromServer', {
+          message,
+        })
+    }
   })
 })
 
