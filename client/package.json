@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack && cp index.html dist/index.html"
+    "build": "npx webpack && cp index.html dist/index.html",
+    "build-win": "npx webpack && copy index.html dist\\index.html"
   },
   "author": "",
   "license": "ISC",
