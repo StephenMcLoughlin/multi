@@ -12,5 +12,6 @@ const playAudio = () => {
 }
 
 socket.on('broadcast', () => {
+  console.log('audio')
   playAudio()
 })
